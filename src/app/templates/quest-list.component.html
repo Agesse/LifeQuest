@@ -1,0 +1,26 @@
+<main class="row">
+  <aside class="col-12 col-lg-3">
+    <!-- LISTE QUETES -->
+    <ul class="list-group">
+      <li class="list-group-item" id="quest-list-header"> {{STRINGS.questListTitle}}
+        <button class="btn btn-secondary btn-sm" id="add-button" type="button" (click)="addQuest()" md-tooltip="{{STRINGS.tooltipAddButton}}">
+          <i class="material-icons">add</i>
+        </button>
+      </li>
+      <ng-container *ngIf="toggleList || largeScreen">
+        <li class="list-group-item" *ngFor="let quest of quests" [class.active]="quest?._id === selectedQuest._id" (click)="onSelect(quest)">
+          {{quest?.title}}
+        </li>
+      </ng-container>
+      <li class="list-group-item expand-button" *ngIf="!largeScreen && quests && quests.length > 0" (click)="toggleList = !toggleList">
+        <i class="material-icons" *ngIf="!toggleList">expand_more</i>
+        <i class="material-icons" *ngIf="toggleList">expand_less</i>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- DETAIL QUETE -->
+  <article class="col-12 col-lg-9">
+    <quest-detail [quest]="selectedQuest" (reload)="reload($event)"></quest-detail>
+  </article>
+</main>

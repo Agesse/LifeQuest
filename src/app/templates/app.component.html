@@ -1,0 +1,25 @@
+<div class="main-container container">
+
+  <!-- TITRE APPLICATION -->
+  <header *ngIf="loggedIn">
+    <h1 class="text-primary">
+      <img id="logo" src="./img/life-quest-icon.svg"> {{STRINGS.appName}}
+      <small class="text-muted"> {{STRINGS.appSubtitle}} </small>
+    </h1>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav *ngIf="loggedIn">
+    <ul class="nav nav-tabs">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" routerLink="/active-quests" routerLinkActive="active">{{STRINGS.activeQuestTab}}</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" routerLink="/completed-quests" routerLinkActive="active">{{STRINGS.completedQuestTab}}</a>
+      </li>
+    </ul>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+</div>

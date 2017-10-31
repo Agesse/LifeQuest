@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>Life's Quest</title>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Ajout, suppression et complétions de quêtes pour la vie de tous les jours.">
+
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/angularCustomTheme.css" rel="stylesheet">
+  <link href="css/loading.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="systemjs.config.js"></script>
+  <script>
+    System.import('main.js').catch(function(err) {
+      console.error(err);
+    });
+  </script>
+</head>
+
+<body>
+  <app>
+    <div class="loading-page container">
+      <div class="row justify-content-center">
+        <div class="texte-chargement text-primary">
+          Chargement
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="spinner text-center">
+          <div class="bounce1 bg-primary"></div>
+          <div class="bounce2 bg-primary"></div>
+          <div class="bounce3 bg-primary"></div>
+        </div>
+      </div>
+    </div>
+  </app>
+</body>
+
+</html>

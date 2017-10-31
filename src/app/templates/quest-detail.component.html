@@ -1,0 +1,36 @@
+<div class="card card-block">
+
+  <div class="panel-body">
+
+    <!-- QUETE PRESENTE -->
+    <div *ngIf="quest != null">
+
+      <button type="button" class="btn btn-secondary btn-sm" id="del-button" md-tooltip="{{STRINGS.tooltipRemoveButton}}" (click)="remove()">
+        <i class="material-icons">clear</i>
+      </button>
+
+      <div>
+        <h2 class="card-title d-inline-block">{{quest?.title}}</h2>
+      </div>
+
+      <md-progress-bar value="{{completionRate}}" md-tooltip="{{STRINGS.tooltipProgressBar}}"></md-progress-bar>
+
+      <ul class="list-group list-objectives">
+        <li class="list-group-item" [class.objective-complete]="obj?.completed" *ngFor="let obj of quest?.objectives" (click)="checkObj(obj)">
+          <i *ngIf="obj?.completed" class="icon-objectif material-icons mr-2">done</i>
+          <i *ngIf="!obj?.completed" class="icon-objectif material-icons mr-2">clear</i> {{obj?.descr}}
+        </li>
+      </ul>
+
+      <div id="reward" class="float-right mt-3" md-tooltip="{{STRINGS.tooltipReward}}">
+        <img src="./img/coins.svg"> {{quest?.reward}}
+      </div>
+    </div>
+
+    <!-- QUETE ABSENTE -->
+    <div class="alert alert-info" *ngIf="quest === null">
+      {{STRINGS.infoNoQuest}}
+    </div>
+
+  </div>
+</div>

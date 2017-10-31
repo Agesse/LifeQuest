@@ -1,0 +1,17 @@
+<content class="row justify-content-center">
+  <div class="col-md-6 col-lg-3">
+    <h2 class="text-primary">{{STRINGS.login}}</h2>
+
+    <!-- FORMULAIRE DE LOGIN -->
+    <form class="form" #form="ngForm" (ngSubmit)="onSubmit()">
+      <input class="form-control mt-4" type="text" name="user" placeholder="{{STRINGS.userPlaceHolder}}" [(ngModel)]="user" required>
+      <input class="form-control mt-2" type="password" name="mdp" placeholder="{{STRINGS.passwordPlaceHolder}}" [(ngModel)]="mdp"
+        required>
+      <button class="btn btn-primary btn-block mt-4" type="submit" [disabled]="!form.form.valid">{{STRINGS.signin}}</button>
+    </form>
+
+    <div class="alert alert-danger mt-4" role="alert" *ngIf="errorBadLogin">
+      <strong>{{STRINGS.warning}}</strong>{{STRINGS.warningWrongUser}}
+    </div>
+  </div>
+</content>

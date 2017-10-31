@@ -1,0 +1,55 @@
+<h3>{{STRINGS.modalTitle}}</h3>
+
+<!-- FORMULAIRE D'AJOUT DE QUETE -->
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+
+
+  <!-- INPUT TITRE QUETE -->
+  <div class="form-group">
+    <label for="questTitle">{{STRINGS.addQuestTitle}}</label>
+    <input class="form-control" name="questTitle" type="text" placeholder="{{STRINGS.addQuestPlaceholder}}" [(ngModel)]="newQuest.title"
+      required>
+  </div>
+
+
+  <!-- INPUT REWARD QUETE -->
+  <div class="form-group">
+    <label for="questReward">{{STRINGS.addRewardTitle}}</label>
+    <input class="form-control" name="questReward" placeholder="{{STRINGS.addRewardPlaceholder}}" [(ngModel)]="newQuest.reward"
+      required>
+  </div>
+
+
+  <!-- INPUT OBJECTIFS QUETE -->
+  <label for="questObj">{{STRINGS.addObjectivesTitle}}</label>
+
+  <!-- Input de saisie de l'objectif et bouton de validation -->
+  <div class="input-group">
+    <input class="form-control" id="questObj" type="text" placeholder="{{STRINGS.addObjectivesPlaceHolder}}" #objectiveInput>
+    <span class="input-group-btn">
+      <button class="btn btn-secondary" type="button" (click)="addObjective(objectiveInput.value);objectiveInput.value=null">
+        <i class="material-icons">add</i>
+      </button>
+    </span>
+  </div>
+
+  <div class="alert alert-danger mt-2" *ngIf="isWarningState">
+    <strong>{{STRINGS.warning}}</strong>{{warningMessage}}
+  </div>
+
+  <!-- Liste des objectifs -->
+  <ul class="list-group mt-2">
+    <li class="list-group-item" *ngFor="let obj of newQuest.objectives; let i = index">{{obj.descr}}
+      <button type="button" class="btn btn-secondary btn-sm" id="del-button" md-tooltip="{{STRINGS.tooltipRemoveObjButton}}" (click)="delObjective(i)">
+        <i class="material-icons">clear</i>
+      </button>
+    </li>
+  </ul>
+
+
+  <!-- BOUTONS VALIDATION FORMULAIRE -->
+  <md-dialog-actions>
+    <button class="btn btn-primary" type="submit" [disabled]="!form.form.valid || newQuest.objectives.length === 0">{{STRINGS.okButton}}</button>
+    <button class="btn btn-danger" type="button" (click)="dialog.close(null)">{{STRINGS.noButton}}</button>
+  </md-dialog-actions>
+</form>

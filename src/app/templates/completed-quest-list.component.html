@@ -1,0 +1,20 @@
+<main>
+  <p class="text-right">
+    <strong>{{STRINGS.total | uppercase}}</strong> <span class="badge badge-primary">{{completedQuests?.length}}</span>
+  </p>
+
+  <table class="table table-bordered">
+    <thead class="thead-default">
+      <tr>
+        <th>{{STRINGS.addQuestTitle}}</th>
+        <th>{{STRINGS.addRewardTitle}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let quest of completedQuests">
+        <td>{{quest?.title}}</td>
+        <td>{{quest?.reward}}</td>
+      </tr>
+    </tbody>
+  </table>
+</main>
